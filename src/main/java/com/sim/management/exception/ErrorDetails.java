@@ -1,42 +1,17 @@
 package com.sim.management.exception;
 
-import java.util.Date;
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.http.HttpStatus;
 
+import java.util.Date;
+@Setter
+@Getter
+@AllArgsConstructor
 public class ErrorDetails {
     private Date timestamp;
-    private List<String> message;
-    private String details;
-
-    public ErrorDetails(Date timestamp, List<String> message, String details) {
-        this.timestamp = timestamp;
-        this.message = message;
-        this.details = details;
-    }
-
-    public Date getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    public List<String> getMessage() {
-        return message;
-    }
-
-    public void setMessage(List<String> message) {
-        this.message = message;
-    }
-
-    public String getDetails() {
-        return details;
-    }
-
-    public void setDetails(String details) {
-        this.details = details;
-    }
-
+    private String message;
+    private HttpStatus status;
 
 }

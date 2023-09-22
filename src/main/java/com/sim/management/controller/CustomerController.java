@@ -3,7 +3,6 @@ package com.sim.management.controller;
 import com.sim.management.dto.CustomerDto;
 import com.sim.management.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,26 +16,26 @@ public class CustomerController {
 
     @PostMapping("/saveCustomer")
     public ResponseEntity<CustomerDto> saveCustomer(@RequestBody CustomerDto CustomerDto) {
-        CustomerDto customerDto = customerService.saveCustomer(CustomerDto);
-        return new ResponseEntity<>(customerDto, HttpStatus.CREATED);
+        return ResponseEntity.ok(customerService.saveCustomer(CustomerDto));
+
     }
 
     @GetMapping("/getAllCustomer")
     public ResponseEntity<List<CustomerDto>> getAllCustomer() {
-        List<CustomerDto> customerList = customerService.getAllCustomer();
-        return new ResponseEntity<>(customerList, HttpStatus.OK);
+
+        return ResponseEntity.ok(customerService.getAllCustomer());
     }
 
     @GetMapping("/getCustomerById/{customerId}")
-    public ResponseEntity<CustomerDto> getCustomerById(@PathVariable Long customerId) {
-        CustomerDto customer = customerService.getCustomerById(customerId);
-        return new ResponseEntity<CustomerDto>(customer, HttpStatus.OK);
+    public ResponseEntity<List<CustomerDto>> getCustomerById(@PathVariable Long customerId) {
+
+        return ResponseEntity.ok(customerService.getCustomerById(customerId));
     }
 
     @PutMapping("/customer/{customerId}")
-    public CustomerDto updateCustomerDto(@RequestBody CustomerDto customerDto, @PathVariable("customerId") Long customerId) {
-        CustomerDto customerDto1 = customerService.updateCustomer(customerDto, customerId);
-        return customerDto1;
+    public ResponseEntity<CustomerDto> updateCustomerDto(@RequestBody CustomerDto customerDto, @PathVariable("customerId") Long customerId) {
+
+        return ResponseEntity.ok(customerService.updateCustomer(customerDto, customerId));
     }
 
     @DeleteMapping("/deleteCustomer/{customerId}")
@@ -46,13 +45,12 @@ public class CustomerController {
 
     @GetMapping("/getBirthdayList")
     public ResponseEntity<List<CustomerDto>> getCustomerDateOfBirth() {
-        List<CustomerDto> customerDtoList = customerService.getCustomerDateOfBirth();
-        return new ResponseEntity<>(customerDtoList, HttpStatus.OK);
+        return ResponseEntity.ok(customerService.getCustomerDateOfBirth());
     }
 
     @GetMapping("/getEmailById/{customerId}")
     public ResponseEntity<String> sendEmail(@PathVariable Long customerId) {
-        return new ResponseEntity<String>(customerService.sendEmail(customerId), HttpStatus.OK);
+        return ResponseEntity.ok(customerService.sendEmail(customerId));
     }
 
     @GetMapping("/getBirthdayNotification")

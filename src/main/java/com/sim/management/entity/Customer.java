@@ -1,9 +1,6 @@
 package com.sim.management.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -11,12 +8,10 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.time.LocalDate;
-
-
 @Setter
 @Getter
+
 @Entity
 public class Customer {
     @Id
@@ -39,10 +34,9 @@ public class Customer {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @NotNull(message = "Please provide a date.")
     private LocalDate dateOfBirth;
-
-//    @OneToMany(cascade = CascadeType.ALL)
-//   // @JoinColumn(name ="simId",referencedColumnName = "simId")
-//    private List<Sim> sims;
+//    @OneToMany(cascade=CascadeType.ALL)
+//    @JoinColumn(name ="sim_Id",referencedColumnName = "sim_Id")
+//    private Sim sim;
 
 
 }

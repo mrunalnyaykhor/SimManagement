@@ -2,18 +2,15 @@ package com.sim.management.service;
 
 import com.sim.management.dto.CustomerDto;
 import com.sim.management.entity.Customer;
-import org.springframework.http.HttpStatusCode;
 
-import java.io.ByteArrayInputStream;
 import java.util.List;
-import java.util.Optional;
 
 public interface CustomerService {
-    CustomerDto saveCustomer(CustomerDto customer);
+    CustomerDto saveCustomer(CustomerDto CustomerDto);
 
     List<CustomerDto> getAllCustomer();
 
-    CustomerDto getCustomerById(Long customerId);
+    List<CustomerDto> getCustomerById(Long customerId);
 
     String deleteCustomerById(Long customerId);
 
@@ -26,4 +23,6 @@ public interface CustomerService {
     String sendEmail(Long customerId);
 
     String getBirthDayNotification();
+
+
 }
